@@ -10,6 +10,7 @@
 
 /**
  * Returns an area of a rectangle given by width and height.
+ * Возвращает площадь прямоугольника, заданную шириной и высотой.
  *
  * @param {number} width
  * @param {number} height
@@ -19,13 +20,15 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  // throw new Error('Not implemented');
+  return width * height;
 }
 
 
 /**
  * Returns a circumference of circle given by radius.
+ * Возвращает длину окружности, заданную радиусом.
  *
  * @param {number} radius
  * @return {number}
@@ -35,12 +38,14 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  // throw new Error('Not implemented');
+  return 2 * Math.PI * radius;
 }
 
 /**
  * Returns an average of two given numbers.
+ * Возвращает среднее значение двух заданных чисел
  *
  * @param {number} value1
  * @param {number} value2
@@ -51,8 +56,9 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  const res = (value1 + value2) / 2;
+  return Number.isFinite(res) ? res : Number.MAX_VALUE;
 }
 
 /**
