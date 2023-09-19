@@ -238,6 +238,9 @@ function isPrime(n) {
  * Tries to convert value to number and returns it if conversion was successful;
  * otherwise returns default value passed as a second argument.
  *
+ * Пытается преобразовать значение в число и возвращает его, если преобразование прошло успешно;
+ * в противном случае возвращает значение по умолчанию, переданное в качестве второго аргумента.
+ *
  * @param {any} value
  * @param {any} def
  * @return {number}
@@ -249,8 +252,8 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  return Number(value) ? Number(value) : def;
 }
 
 module.exports = {
