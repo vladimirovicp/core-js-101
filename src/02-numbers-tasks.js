@@ -83,6 +83,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
 
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
+ * Возвращает корень линейного уравнения a*x + b = 0, заданный коэффициентами a и b.
  *
  * @param {number} a
  * @param {number} b
@@ -93,8 +94,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return -b / a;
 }
 
 
@@ -102,6 +103,9 @@ function getLinearEquationRoot(/* a, b */) {
  * Returns an angle (in radians) between two vectors given by xi and yi,
  * coordinates in Cartesian plane.
  * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
+ *
+ * Возвращает угол (в радианах) между двумя векторами, заданными xi и yi,
+ * координаты в декартовой плоскости.
  *
  * @param {number} x1
  * @param {number} y1
@@ -116,12 +120,16 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const a = Math.sqrt((x1 ** 2) + (y1 ** 2));
+  const b = Math.sqrt((x2 ** 2) + (y2 ** 2));
+  const ab = (x1 * x2) + (y1 * y2);
+  return Math.acos(ab / (a * b));
 }
 
 /**
  * Returns a last digit of a integer number.
+ * Возвращает последнюю цифру целого числа.
  *
  * @param {number} value
  * @return {number}
@@ -132,13 +140,15 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  const string = value.toString();
+  return string[string.length - 1];
 }
 
 
 /**
  * Returns a number by given string representation.
+ * Возвращает число в соответствии с заданным строковым представлением.
  *
  * @param {string} value
  * @return {number}
@@ -148,12 +158,13 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return Number(value);
 }
 
 /**
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
+ * Возвращает длину диагонали прямоугольного параллелепипеда, заданную его сторонами a,b,c.
  *
  * @param {number} a
  * @param {number} b
@@ -165,13 +176,14 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt((a ** 2) + (b ** 2) + (c ** 2));
 }
 
 
 /**
  * Returns the number rounded to specified power of 10.
+ * Возвращает число, округленное до указанной степени 10.
  *
  * @param {number} num
  * @param {number} pow
@@ -187,16 +199,18 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return pow === 0 ? num : Math.round(num / (10 ** pow)) * (10 ** pow);
 }
 
 /**
  * Returns true is the number is prime; otherwise false.
+ * Возвращает значение true, если число простое; в противном случае значение false.
+ *
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
  * @param {number} n
- * @return {bool}
+ * @return {boolean}
  *
  * @example:
  *   4 => false
@@ -208,8 +222,16 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n % 2 === 0 && n !== 2) {
+    return false;
+  }
+  for (let i = 2; i < n / 2; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
